@@ -12,7 +12,7 @@
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.ehailingapp.AdminLoginPageController">
    <right>
-      <AnchorPane prefHeight="500.0" prefWidth="345.0" BorderPane.alignment="CENTER">
+      <AnchorPane prefHeight="400.0" prefWidth="341.0" BorderPane.alignment="CENTER">
          <children>
             <Label layoutX="30.0" layoutY="189.0" prefHeight="28.0" prefWidth="63.0" text="Username">
                <font>
@@ -34,7 +34,7 @@
                   <Font size="14.0" />
                </font>
             </Label>
-            <Text layoutX="81.0" layoutY="164.0" strokeType="OUTSIDE" strokeWidth="0.0" text=" Admin Page" textAlignment="CENTER" wrappingWidth="178.13671875">
+            <Text layoutX="81.0" layoutY="164.0" strokeType="OUTSIDE" strokeWidth="0.0" text=" Admin Dashboard" textAlignment="CENTER" wrappingWidth="178.13671875">
                <font>
                   <Font size="18.0" />
                </font>
