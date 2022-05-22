@@ -63,7 +63,11 @@ public class AdminLoginPageController {
     }
 
     //for testing purpose only
-    public void accessToMenuPage() {
-        System.out.println("Menu");
+    public void accessToMenuPage(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("adminMenuPage.fxml"));
+        Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
     }
 }
