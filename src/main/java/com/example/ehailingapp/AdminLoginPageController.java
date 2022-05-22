@@ -2,12 +2,22 @@ package com.example.ehailingapp;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
+
+import java.io.IOException;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 
 public class AdminLoginPageController {
     @FXML
@@ -21,7 +31,7 @@ public class AdminLoginPageController {
     @FXML
     private Label loginMessage;
 
-    public void loginButtonOnAction(ActionEvent event){
+    public void loginButtonOnAction(ActionEvent event) throws IOException {
         if ((usernameField.getText().isBlank())&&(passwordField.getText().isBlank())){
             loginMessage.setText("Please enter UserID and password!");
         }
@@ -32,12 +42,28 @@ public class AdminLoginPageController {
             loginMessage.setText("Please enter UserID!");
         }
         else{
-            //code for validate login
+//            Connection con = AdminMain.getConnection();
+//            String id = usernameField.getText();
+//            String password = passwordField.getText();
+//            PreparedStatement statement = con.prepareStatement("SELECT COUNT(username) AS existence FROM tablename WHERE ");
+//            ResultSet exist = statement.executeQuery();
+//            while(exist.next()){
+//                if ((exist.getInt("got")) == 1){
+//
+//                } else {
+//                    loginMessage.setText("Admin account not found!");
+//                }
+//            }
         }
     }
 
-    public void exitButtonOnAction(ActionEvent event){
+    public void exitButtonOnAction(ActionEvent event) throws IOException {
         Stage stage = (Stage) exitButton.getScene().getWindow();
         stage.close();
+    }
+
+    //for testing purpose only
+    public void accessToMenuPage() {
+        System.out.println("Menu");
     }
 }
