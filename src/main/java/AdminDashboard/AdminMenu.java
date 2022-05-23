@@ -21,20 +21,21 @@ import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
 
-public class AdminMenuPage implements Initializable{
+public class AdminMenu implements Initializable{
 
     @FXML
     private ListView<String> menuList;
     @FXML
     private ImageView backwardButtonImage;
     @FXML
-    private Button backwardButton;
+    private Button backwardButton,
+            logoutYesButton,
+            logoutNoButton,
+            customerListButton,
+            driverListButton,
+            mapButton;
     @FXML
     private ImageView warningIcon;
-    @FXML
-    private Button logoutYesButton;
-    @FXML
-    private Button logoutNoButton;
 
     String[] menu = {"A", "B", "C"};
 
@@ -47,14 +48,11 @@ public class AdminMenuPage implements Initializable{
         promptLogoutConfirmation(event);
     }
 
-    public void promptLogoutConfirmation(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("logoutAlert.fxml"));
+    public void driverListButtonOnAction(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("adminDriverListPage.fxml"));
+        Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
         Scene scene = new Scene(root);
-        Stage stage = new Stage();
-        stage.setTitle("Warning!");
         stage.setScene(scene);
-        stage.initModality(Modality.APPLICATION_MODAL);
-        stage.initOwner(backwardButton.getScene().getWindow());
         stage.show();
     }
 
@@ -71,6 +69,18 @@ public class AdminMenuPage implements Initializable{
     public void logoutNo(ActionEvent event){
         Stage stage = (Stage) logoutNoButton.getScene().getWindow();
         stage.close();
+    }
+
+    public void promptLogoutConfirmation(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("logoutAlert.fxml"));
+        Scene scene = new Scene(root);
+        Stage stage = new Stage();
+        stage.setTitle("Warning!");
+        stage.setScene(scene);
+        stage.setResizable(false);
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.initOwner(backwardButton.getScene().getWindow());
+        stage.show();
     }
 
 }

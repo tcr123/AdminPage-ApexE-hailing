@@ -1,5 +1,6 @@
 package AdminDashboard;
 
+import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -10,16 +11,13 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 
-public class AdminLoginPageController {
+public class AdminLogin extends Application {
+
     @FXML
     private Button loginButton;
     @FXML
@@ -30,6 +28,20 @@ public class AdminLoginPageController {
     private PasswordField passwordField;
     @FXML
     private Label loginMessage;
+
+    @Override
+    public void start(Stage stage) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(AdminLogin.class.getResource("adminLoginPage.fxml"));
+        Scene scene = new Scene(fxmlLoader.load(), 750, 600);
+//        stage.setTitle("Apex E-Hailing");
+        stage.initStyle(StageStyle.UNDECORATED);
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    public static void accessAdminLoginPage() {
+        launch();
+    }
 
     public void loginButtonOnAction(ActionEvent event) throws IOException {
         if ((usernameField.getText().isBlank())&&(passwordField.getText().isBlank())){

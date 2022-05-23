@@ -6,7 +6,7 @@ import java.sql.DriverManager;
 public class AdminMain {
     public static void main(String[] args) throws Exception {
         //Connection conn = getConnection();
-        AdminLoginPage.accessAdminLoginPage();
+        AdminLogin.accessAdminLoginPage();
     }
 
     public static Connection getConnection() throws Exception{
