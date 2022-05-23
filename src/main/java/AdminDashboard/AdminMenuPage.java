@@ -1,4 +1,4 @@
-package com.example.ehailingapp;
+package AdminDashboard;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;

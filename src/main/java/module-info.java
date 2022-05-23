@@ -4,6 +4,6 @@ module com.example.ehailingapp {
     requires java.sql;
 
 
-    opens com.example.ehailingapp to javafx.fxml;
-    exports com.example.ehailingapp;
+    opens AdminDashboard to javafx.fxml;
+    exports AdminDashboard;
 }

@@ -5,19 +5,20 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
-public class conn {
+public class DBConnector {
     public static Connection getConnection() throws Exception {
         try {
             String driver = "com.mysql.cj.jdbc.Driver";
-            String url = "jdbc:mysql://10.210.31.31:3306/apex";
-            String username = "apex";
-            String password = "1118";
+//            String url = "jdbc:mysql://10.210.31.31:3306/apex";
+//            String username = "apex";
+//            String password = "1118";
+            String url = "jdbc:mysql://localhost/apexTesting";
+            String username = "root";
+            String password = "jack55092080";
             Class.forName(driver);
-
-            //System.out.println("Connected");
+//            System.out.println("Connected to database");
             return DriverManager.getConnection(url, username, password);
         } catch (Exception e) {
-
             System.out.println(e);
         }
         return null;

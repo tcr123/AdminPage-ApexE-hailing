@@ -1,4 +1,4 @@
-package com.example.ehailingapp;
+package AdminDashboard;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
