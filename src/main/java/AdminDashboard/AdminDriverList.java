@@ -1,6 +1,8 @@
 package AdminDashboard;
 
 import DbAccess.DBConnector;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -18,15 +20,13 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import javafx.util.Duration;
 
-import javax.xml.transform.Result;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.text.NumberFormat;
 import java.util.ResourceBundle;
 
 public class AdminDriverList implements Initializable {
@@ -50,6 +50,10 @@ public class AdminDriverList implements Initializable {
     PreparedStatement sqlStatement = null;
     ObservableList<Driver> oblist = FXCollections.observableArrayList();
 
+    public boolean runThread = true;
+
+    Timeline timeline;
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         try {
@@ -66,6 +70,18 @@ public class AdminDriverList implements Initializable {
         icnumber_col.setCellValueFactory(new PropertyValueFactory<>("icNumber"));
 
         driverTable.setItems(oblist);
+
+//        AdminDriverList adl = new AdminDriverList();
+//        thread = new Thread(adl);
+//        thread.start();
+        timeline = new Timeline(
+                new KeyFrame(Duration.seconds(1), e -> {
+//                    System.out.println("Testing");
+                    refreshTable();
+                })
+        );
+        timeline.setCycleCount(Timeline.INDEFINITE);
+        timeline.play();
     }
 
     public void addDriverButtonOnAction(ActionEvent event) throws IOException {
@@ -100,6 +116,7 @@ public class AdminDriverList implements Initializable {
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
+        timeline.stop();
     }
 
     public void refreshButtonOnAction(ActionEvent event){
