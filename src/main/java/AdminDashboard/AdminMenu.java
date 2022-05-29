@@ -7,10 +7,10 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.ListView;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.text.Text;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -29,23 +29,37 @@ public class AdminMenu implements Initializable{
     private ImageView backwardButtonImage;
     @FXML
     private Button backwardButton,
-            logoutYesButton,
-            logoutNoButton,
             customerListButton,
             driverListButton,
-            mapButton;
+            mapButton,
+            logoutButton,
+            exitButton;
     @FXML
     private ImageView warningIcon;
+    @FXML
+    private Label logoutAlertMessage;
 
-    String[] menu = {"A", "B", "C"};
+    boolean exit = false;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 //        menuList.getItems().addAll(menu);
     }
 
-    public void backwardButtonOnClick(ActionEvent event) throws IOException {
-        promptLogoutConfirmation(event);
+    public void customerListButtonOnAction(ActionEvent event) throws IOException{
+        Parent root = FXMLLoader.load(getClass().getResource("adminCustomerListPage.fxml"));
+        Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    public void customerStatusButtonAction(ActionEvent event) throws IOException{
+        Parent root = FXMLLoader.load(getClass().getResource("adminCustomerStatusPage.fxml"));
+        Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
     }
 
     public void driverListButtonOnAction(ActionEvent event) throws IOException {
@@ -56,31 +70,36 @@ public class AdminMenu implements Initializable{
         stage.show();
     }
 
-    public void logoutYes(ActionEvent event) throws IOException {
-        Stage stage = (Stage) logoutNoButton.getScene().getWindow();
-        stage.close();
-        Parent root = FXMLLoader.load(getClass().getResource("adminLoginPage.fxml"));
-        stage = (Stage) backwardButton.getScene().getWindow();
+    public void driverStatusButtonOnAction(ActionEvent event) throws IOException{
+        Parent root = FXMLLoader.load(getClass().getResource("adminDriverStatusPage.fxml"));
+        Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
     }
 
-    public void logoutNo(ActionEvent event){
-        Stage stage = (Stage) logoutNoButton.getScene().getWindow();
-        stage.close();
+    public void exit(ActionEvent event){
+        Stage stage = (Stage) exitButton.getScene().getWindow();
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Exit");
+        alert.setHeaderText("Exit confirmation");
+        alert.setContentText("Do you want to exit?: ");
+        if (alert.showAndWait().get() == ButtonType.OK){
+            stage.close();
+        }
     }
 
-    public void promptLogoutConfirmation(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("logoutAlert.fxml"));
-        Scene scene = new Scene(root);
-        Stage stage = new Stage();
-        stage.setTitle("Warning!");
-        stage.setScene(scene);
-        stage.setResizable(false);
-        stage.initModality(Modality.APPLICATION_MODAL);
-        stage.initOwner(backwardButton.getScene().getWindow());
-        stage.show();
+    public void goLoginPage(ActionEvent event) throws IOException {
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Logout");
+        alert.setHeaderText("You're about to logout!");
+        alert.setContentText("Do you want to logout?: ");
+        if (alert.showAndWait().get() == ButtonType.OK){
+            Parent root = FXMLLoader.load(getClass().getResource("adminLoginPage.fxml"));
+            Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+        }
     }
-
 }

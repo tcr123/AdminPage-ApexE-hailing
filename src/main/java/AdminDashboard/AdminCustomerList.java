@@ -26,7 +26,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ResourceBundle;
 
-public class AdminDriverList implements Initializable {
+public class AdminCustomerList implements Initializable {
     @FXML
     private Button backwardButton,
             refreshButton,
@@ -76,7 +76,7 @@ public class AdminDriverList implements Initializable {
         timeline.play();
     }
 
-    public void addDriverButtonOnAction(ActionEvent event) throws IOException {
+    public void addCustomerButtonOnAction(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("adminAddDriverPage.fxml"));
         Scene scene = new Scene(root);
         Stage stage = new Stage();
@@ -90,7 +90,7 @@ public class AdminDriverList implements Initializable {
 //        refreshTable();
     }
 
-    public void deleteDriverButtonOnAction(ActionEvent event) throws IOException {
+    public void deleteCustomerButtonOnAction(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("adminDeleteDriverPage.fxml"));
         Scene scene = new Scene(root);
         Stage stage = new Stage();

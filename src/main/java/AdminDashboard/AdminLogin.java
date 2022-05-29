@@ -7,10 +7,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
+import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
@@ -37,6 +35,11 @@ public class AdminLogin extends Application {
         stage.initStyle(StageStyle.UNDECORATED);
         stage.setScene(scene);
         stage.show();
+
+        stage.setOnCloseRequest(event -> {
+            event.consume();
+            exit(stage);
+        });
     }
 
     public static void accessAdminLoginPage() {
@@ -69,9 +72,19 @@ public class AdminLogin extends Application {
         }
     }
 
+    public void exit(Stage stage){
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Exit");
+        alert.setHeaderText("Exit confirmation");
+        alert.setContentText("Do you want to exit?: ");
+        if (alert.showAndWait().get() == ButtonType.OK){
+            stage.close();
+        }
+    }
+
     public void exitButtonOnAction(ActionEvent event) throws IOException {
         Stage stage = (Stage) exitButton.getScene().getWindow();
-        stage.close();
+        exit(stage);
     }
 
     //for testing purpose only

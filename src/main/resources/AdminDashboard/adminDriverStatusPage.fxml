@@ -12,7 +12,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="750.0" style="-fx-background-color: #dceff7;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="AdminDashboard.AdminDriverList">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="750.0" style="-fx-background-color: #dceff7;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="AdminDashboard.AdminDriverStatus">
    <top>
       <AnchorPane prefHeight="36.0" prefWidth="750.0" style="-fx-background-color: #7FD1FA;" BorderPane.alignment="CENTER">
          <children>
@@ -37,7 +37,7 @@
          <children>
             <AnchorPane layoutY="-6.0" prefHeight="38.0" prefWidth="750.0" style="-fx-background-color: #bbe7fc;">
                <children>
-                  <Text layoutX="93.0" layoutY="25.0" strokeType="OUTSIDE" strokeWidth="0.0" text="&gt; Driver List">
+                  <Text layoutX="93.0" layoutY="25.0" strokeType="OUTSIDE" strokeWidth="0.0" text="&gt; Driver Status">
                      <font>
                         <Font name="Times New Roman" size="14.0" />
                      </font></Text>
@@ -55,9 +55,14 @@
                         <Font name="Times New Roman" size="14.0" />
                      </font>
                   </Hyperlink>
+                  <Text fx:id="realTimeText" layoutX="480.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="269.13671875">
+                     <font>
+                        <Font name="Times New Roman" size="18.0" />
+                     </font>
+                  </Text>
                </children>
             </AnchorPane>
-            <Label layoutX="10.0" layoutY="44.0" text="Driver List">
+            <Label layoutX="10.0" layoutY="44.0" text="Driver Status">
                <font>
                   <Font name="Times New Roman" size="18.0" />
                </font>
@@ -65,12 +70,9 @@
             <TableView fx:id="driverTable" layoutX="50.0" layoutY="72.0" prefHeight="492.0" prefWidth="750.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
               <columns>
                 <TableColumn fx:id="name_col" prefWidth="168.0" text="Name" />
-                  <TableColumn fx:id="icnumber_col" minWidth="9.0" prefWidth="123.0" text="IC Number" />
               </columns>
             </TableView>
-            <Button fx:id="refreshButton" layoutX="685.0" layoutY="39.0" minWidth="53.0" mnemonicParsing="false" onAction="#refreshButtonOnAction" prefHeight="30.0" prefWidth="61.0" text="Refresh" />
-            <Button fx:id="addDriverButton" layoutX="509.0" layoutY="39.0" minWidth="53.0" mnemonicParsing="false" onAction="#addDriverButtonOnAction" prefHeight="30.0" prefWidth="79.0" text="Add Driver" />
-            <Button fx:id="deleteDriverButton" layoutX="590.0" layoutY="39.0" minWidth="53.0" mnemonicParsing="false" onAction="#deleteDriverButtonOnAction" prefHeight="30.0" prefWidth="93.0" text="Delete Driver" />
+            <Button fx:id="refreshButton" layoutX="685.0" layoutY="40.0" minWidth="53.0" mnemonicParsing="false" onAction="#refreshButtonOnAction" prefHeight="30.0" prefWidth="61.0" text="Refresh" />
          </children>
       </AnchorPane>
    </left>

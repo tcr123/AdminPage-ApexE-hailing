@@ -14,9 +14,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.stage.Modality;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 import javafx.util.Duration;
 
 import java.io.IOException;
@@ -24,15 +23,15 @@ import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.ResourceBundle;
 
-public class AdminDriverList implements Initializable {
+public class AdminDriverStatus implements Initializable {
     @FXML
     private Button backwardButton,
             refreshButton,
             exitButton;
-    @FXML
-    private Button addDriverButton;
     @FXML
     private Hyperlink toMenuHyperlink;
     @FXML
@@ -40,14 +39,15 @@ public class AdminDriverList implements Initializable {
     @FXML
     private TableColumn<Driver, String> name_col;
     @FXML
-    private TableColumn<Driver, String> icnumber_col;
+    private Text realTimeText;
 
     Connection conn = null;
     ResultSet driverRS = null;
     PreparedStatement sqlStatement = null;
     ObservableList<Driver> oblist = FXCollections.observableArrayList();
 
-    Timeline timeline;
+    Timeline timeline, realTimeTL;
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -62,44 +62,27 @@ public class AdminDriverList implements Initializable {
         }
 
         name_col.setCellValueFactory(new PropertyValueFactory<>("name"));
-        icnumber_col.setCellValueFactory(new PropertyValueFactory<>("icNumber"));
-
         driverTable.setItems(oblist);
 
+        //Update table every 0.5 second
         timeline = new Timeline(
-                new KeyFrame(Duration.seconds(1), e -> {
-//                    System.out.println("Testing");
+                new KeyFrame(Duration.seconds(0.5), e -> {
                     refreshTable();
                 })
         );
         timeline.setCycleCount(Timeline.INDEFINITE);
         timeline.play();
-    }
 
-    public void addDriverButtonOnAction(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("adminAddDriverPage.fxml"));
-        Scene scene = new Scene(root);
-        Stage stage = new Stage();
-        stage.setTitle("Add Driver");
-        stage.setScene(scene);
-        stage.initStyle(StageStyle.UNDECORATED);
-        stage.initModality(Modality.APPLICATION_MODAL);
-        stage.initOwner(backwardButton.getScene().getWindow());
-        stage.show();
-//        sqlStatement = conn.prepareStatement("INSERT INTO driverlist ")
-//        refreshTable();
-    }
-
-    public void deleteDriverButtonOnAction(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("adminDeleteDriverPage.fxml"));
-        Scene scene = new Scene(root);
-        Stage stage = new Stage();
-        stage.setTitle("Delete Driver");
-        stage.setScene(scene);
-        stage.initStyle(StageStyle.UNDECORATED);
-        stage.initModality(Modality.APPLICATION_MODAL);
-        stage.initOwner(backwardButton.getScene().getWindow());
-        stage.show();
+        //Update real timer every 1 second
+        SimpleDateFormat sdf = new SimpleDateFormat("E, dd MMM yyyy HH:mm:ss z");
+        realTimeTL = new Timeline(
+                new KeyFrame(Duration.seconds(1.0), e -> {
+                    final String timeNow = sdf.format(new Date());
+                    realTimeText.setText(timeNow);
+                })
+        );
+        realTimeTL.setCycleCount(Timeline.INDEFINITE);
+        realTimeTL.play();
     }
 
     public void exit(ActionEvent event){
@@ -120,6 +103,7 @@ public class AdminDriverList implements Initializable {
         stage.setScene(scene);
         stage.show();
         timeline.stop();
+        realTimeTL.stop();
     }
 
     public void refreshButtonOnAction(ActionEvent event){
