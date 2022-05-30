@@ -65,7 +65,11 @@
             <TableView fx:id="driverTable" layoutX="50.0" layoutY="72.0" prefHeight="492.0" prefWidth="750.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
               <columns>
                 <TableColumn fx:id="name_col" prefWidth="168.0" text="Name" />
-                  <TableColumn fx:id="icnumber_col" minWidth="9.0" prefWidth="123.0" text="IC Number" />
+                  <TableColumn fx:id="capacity_col" minWidth="9.0" prefWidth="123.0" text="capacity" />
+                  <TableColumn fx:id="location_col" prefWidth="75.0" text="location" />
+                  <TableColumn fx:id="status_col" prefWidth="75.0" text="status" />
+                  <TableColumn fx:id="customer_col" prefWidth="75.0" text="customer" />
+                  <TableColumn fx:id="rating_col" prefWidth="75.0" text="rating" />
               </columns>
             </TableView>
             <Button fx:id="refreshButton" layoutX="685.0" layoutY="39.0" minWidth="53.0" mnemonicParsing="false" onAction="#refreshButtonOnAction" prefHeight="30.0" prefWidth="61.0" text="Refresh" />

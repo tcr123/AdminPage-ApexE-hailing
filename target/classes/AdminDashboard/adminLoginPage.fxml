@@ -25,7 +25,7 @@
                </font>
             </Label>
             <PasswordField fx:id="passwordField" layoutX="112.0" layoutY="224.0" prefHeight="25.0" prefWidth="206.0" />
-            <Button fx:id="loginButton" layoutX="28.0" layoutY="296.0" mnemonicParsing="false" onAction="#accessToMenuPage" prefHeight="25.0" prefWidth="290.0" text="Login" />
+            <Button fx:id="loginButton" layoutX="28.0" layoutY="296.0" mnemonicParsing="false" onAction="#loginButtonOnAction" prefHeight="25.0" prefWidth="290.0" text="Login" />
             <Button fx:id="exitButton" layoutX="28.0" layoutY="330.0" mnemonicParsing="false" onAction="#exitButtonOnAction" prefHeight="25.0" prefWidth="290.0" text="Exit" />
             <Label fx:id="loginMessage" alignment="CENTER" layoutX="28.0" layoutY="265.0" prefHeight="17.0" prefWidth="290.0" textFill="RED">
                <font>

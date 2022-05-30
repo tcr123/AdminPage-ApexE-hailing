@@ -40,7 +40,15 @@ public class AdminDriverList implements Initializable {
     @FXML
     private TableColumn<Driver, String> name_col;
     @FXML
-    private TableColumn<Driver, String> icnumber_col;
+    private TableColumn<Driver, Integer> capacity_col;
+    @FXML
+    private TableColumn<Driver, String> location_col;
+    @FXML
+    private TableColumn<Driver, String> status_col;
+    @FXML
+    private TableColumn<Driver, String> customer_col;
+    @FXML
+    private TableColumn<Driver, Double> rating_col;
 
     Connection conn = null;
     ResultSet driverRS = null;
@@ -53,16 +61,24 @@ public class AdminDriverList implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         try {
             conn = DBConnector.getConnection();
-            driverRS = conn.createStatement().executeQuery("SELECT * FROM driverlist");
+            driverRS = conn.createStatement().executeQuery("SELECT * FROM driver");
             while (driverRS.next()){
-                oblist.add(new Driver(driverRS.getString("Name"), driverRS.getString("IcNumber")));
+//                System.out.println(driverRS.getInt("capacity"));
+                oblist.add(new Driver(driverRS.getString("name"), driverRS.getInt("capacity"),
+                        driverRS.getString("location"), driverRS.getString("status"),
+                        driverRS.getString("customer"), driverRS.getDouble("rating")));
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
 
         name_col.setCellValueFactory(new PropertyValueFactory<>("name"));
-        icnumber_col.setCellValueFactory(new PropertyValueFactory<>("icNumber"));
+        capacity_col.setCellValueFactory(new PropertyValueFactory<>("capacity"));
+        location_col.setCellValueFactory(new PropertyValueFactory<>("location"));
+        status_col.setCellValueFactory(new PropertyValueFactory<>("status"));
+        customer_col.setCellValueFactory(new PropertyValueFactory<>("customer"));
+        rating_col.setCellValueFactory(new PropertyValueFactory<>("rating"));
+
 
         driverTable.setItems(oblist);
 
@@ -129,9 +145,11 @@ public class AdminDriverList implements Initializable {
     public void refreshTable(){
         try{
             oblist.clear();
-            driverRS = conn.createStatement().executeQuery("SELECT * FROM driverlist");
+            driverRS = conn.createStatement().executeQuery("SELECT * FROM driver");
             while (driverRS.next()){
-                oblist.add(new Driver(driverRS.getString("Name"), driverRS.getString("IcNumber")));
+                oblist.add(new Driver(driverRS.getString("name"), driverRS.getInt("capacity"),
+                        driverRS.getString("location"), driverRS.getString("status"),
+                        driverRS.getString("customer"), driverRS.getDouble("rating")));
             }
             driverTable.setItems(oblist);
         } catch (Exception e) {

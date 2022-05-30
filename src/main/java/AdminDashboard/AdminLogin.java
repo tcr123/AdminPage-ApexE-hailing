@@ -1,5 +1,6 @@
 package AdminDashboard;
 
+import DbAccess.DBConnector;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -13,6 +14,9 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 
 public class AdminLogin extends Application {
 
@@ -46,7 +50,7 @@ public class AdminLogin extends Application {
         launch();
     }
 
-    public void loginButtonOnAction(ActionEvent event) throws IOException {
+    public void loginButtonOnAction(ActionEvent event) throws Exception {
         if ((usernameField.getText().isBlank())&&(passwordField.getText().isBlank())){
             loginMessage.setText("Please enter UserID and password!");
         }
@@ -57,18 +61,25 @@ public class AdminLogin extends Application {
             loginMessage.setText("Please enter UserID!");
         }
         else{
-//            Connection con = AdminMain.getConnection();
-//            String id = usernameField.getText();
-//            String password = passwordField.getText();
-//            PreparedStatement statement = con.prepareStatement("SELECT COUNT(username) AS existence FROM tablename WHERE ");
-//            ResultSet exist = statement.executeQuery();
-//            while(exist.next()){
-//                if ((exist.getInt("got")) == 1){
-//
-//                } else {
-//                    loginMessage.setText("Admin account not found!");
-//                }
-//            }
+            Connection con = DBConnector.getConnection();
+            String name = usernameField.getText();
+            String password = passwordField.getText();
+            PreparedStatement statement = con.prepareStatement("SELECT * FROM authenication WHERE name = '"+name+"' AND password = '" + password +"'");
+            ResultSet rs = statement.executeQuery();
+            String dbName = "", dbPassword = "";
+            while (rs.next()) {
+                dbName = rs.getString("name");
+                dbPassword = rs.getString("password");
+            }
+            if (!name.equals(dbName)){
+                loginMessage.setText("Admin account '"+ name +"' not found!");
+            } else {
+                if (!password.equals(dbPassword)){
+                    loginMessage.setText("Wrong password! Please try again!");
+                } else {
+                    accessToMenuPage(event);
+                }
+            }
         }
     }
 
@@ -87,7 +98,6 @@ public class AdminLogin extends Application {
         exit(stage);
     }
 
-    //for testing purpose only
     public void accessToMenuPage(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("adminMenuPage.fxml"));
         Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();

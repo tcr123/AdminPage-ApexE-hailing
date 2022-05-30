@@ -55,7 +55,9 @@ public class AdminCustomerList implements Initializable {
             conn = DBConnector.getConnection();
             driverRS = conn.createStatement().executeQuery("SELECT * FROM driverlist");
             while (driverRS.next()){
-                oblist.add(new Driver(driverRS.getString("Name"), driverRS.getString("IcNumber")));
+                oblist.add(new Driver(driverRS.getString("name"), driverRS.getInt("capacity"),
+                        driverRS.getString("location"), driverRS.getString("status"),
+                        driverRS.getString("customer"), driverRS.getDouble("rating")));
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -131,7 +133,7 @@ public class AdminCustomerList implements Initializable {
             oblist.clear();
             driverRS = conn.createStatement().executeQuery("SELECT * FROM driverlist");
             while (driverRS.next()){
-                oblist.add(new Driver(driverRS.getString("Name"), driverRS.getString("IcNumber")));
+//                oblist.add(new Driver(driverRS.getString("Name"), driverRS.getInt("IcNumber")));
             }
             driverTable.setItems(oblist);
         } catch (Exception e) {

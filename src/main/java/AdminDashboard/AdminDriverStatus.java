@@ -55,7 +55,7 @@ public class AdminDriverStatus implements Initializable {
             conn = DBConnector.getConnection();
             driverRS = conn.createStatement().executeQuery("SELECT * FROM driverlist");
             while (driverRS.next()){
-                oblist.add(new Driver(driverRS.getString("Name"), driverRS.getString("IcNumber")));
+//                oblist.add(new Driver(driverRS.getString("name"), driverRS.getInt("capacity")));
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -115,7 +115,7 @@ public class AdminDriverStatus implements Initializable {
             oblist.clear();
             driverRS = conn.createStatement().executeQuery("SELECT * FROM driverlist");
             while (driverRS.next()){
-                oblist.add(new Driver(driverRS.getString("Name"), driverRS.getString("IcNumber")));
+//                oblist.add(new Driver(driverRS.getString("name"), driverRS.getInt("capacity")));
             }
             driverTable.setItems(oblist);
         } catch (Exception e) {
