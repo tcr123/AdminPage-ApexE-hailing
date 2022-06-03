@@ -50,10 +50,8 @@
             </AnchorPane>
             <Button fx:id="logoutButton" layoutX="14.0" layoutY="525.0" mnemonicParsing="false" onAction="#goLoginPage" prefHeight="30.0" prefWidth="194.0" text="Log Out" />
             <Button fx:id="customerListButton" layoutX="14.0" layoutY="48.0" mnemonicParsing="false" onAction="#customerListButtonOnAction" prefHeight="40.0" prefWidth="140.0" text="Customer List" />
-            <Button fx:id="driverListButton" layoutX="14.0" layoutY="148.0" mnemonicParsing="false" onAction="#driverListButtonOnAction" prefHeight="40.0" prefWidth="140.0" text="Driver List" />
-            <Button fx:id="mapButton" layoutX="14.0" layoutY="248.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="140.0" text="Map" />
-            <Button fx:id="customerStatusButton" layoutX="14.0" layoutY="98.0" mnemonicParsing="false" onAction="#customerStatusButtonAction" prefHeight="40.0" prefWidth="140.0" text="Customer Status" />
-            <Button fx:id="driverStatusButton" layoutX="14.0" layoutY="198.0" mnemonicParsing="false" onAction="#driverStatusButtonOnAction" prefHeight="40.0" prefWidth="140.0" text="Driver Status" />
+            <Button fx:id="driverListButton" layoutX="14.0" layoutY="97.0" mnemonicParsing="false" onAction="#driverListButtonOnAction" prefHeight="40.0" prefWidth="140.0" text="Driver List" />
+            <Button fx:id="mapButton" layoutX="14.0" layoutY="147.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="140.0" text="Map" />
          </children>
       </AnchorPane>
    </left>

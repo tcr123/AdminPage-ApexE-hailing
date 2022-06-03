@@ -30,9 +30,8 @@ public class AdminDriverList implements Initializable {
     @FXML
     private Button backwardButton,
             refreshButton,
-            exitButton;
-    @FXML
-    private Button addDriverButton;
+            exitButton,
+            saveChangeButton;
     @FXML
     private Hyperlink toMenuHyperlink;
     @FXML
@@ -102,12 +101,22 @@ public class AdminDriverList implements Initializable {
         stage.initModality(Modality.APPLICATION_MODAL);
         stage.initOwner(backwardButton.getScene().getWindow());
         stage.show();
-//        sqlStatement = conn.prepareStatement("INSERT INTO driverlist ")
-//        refreshTable();
     }
 
     public void deleteDriverButtonOnAction(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("adminDeleteDriverPage.fxml"));
+        Scene scene = new Scene(root);
+        Stage stage = new Stage();
+        stage.setTitle("Delete Driver");
+        stage.setScene(scene);
+        stage.initStyle(StageStyle.UNDECORATED);
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.initOwner(backwardButton.getScene().getWindow());
+        stage.show();
+    }
+
+    public void editDriverButtonOnAction(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("adminEditDriverPage.fxml"));
         Scene scene = new Scene(root);
         Stage stage = new Stage();
         stage.setTitle("Delete Driver");

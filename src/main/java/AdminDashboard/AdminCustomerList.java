@@ -36,16 +36,25 @@ public class AdminCustomerList implements Initializable {
     @FXML
     private Hyperlink toMenuHyperlink;
     @FXML
-    private TableView<Driver> driverTable;
+    private TableView<Customer> customerTable;
     @FXML
-    private TableColumn<Driver, String> name_col;
+    private TableColumn<Customer, String> username_col;
     @FXML
-    private TableColumn<Driver, String> icnumber_col;
+    private TableColumn<Customer, String> status_col;
+    @FXML
+    private TableColumn<Customer, String> expectedArrivalTime_col;
+    @FXML
+    private TableColumn<Customer, Integer> capacity_col;
+    @FXML
+    private TableColumn<Customer, String> startingPoint_col;
+    @FXML
+    private TableColumn<Customer, String> destination_col;
+
 
     Connection conn = null;
-    ResultSet driverRS = null;
+    ResultSet customerRS = null;
     PreparedStatement sqlStatement = null;
-    ObservableList<Driver> oblist = FXCollections.observableArrayList();
+    ObservableList<Customer> oblist = FXCollections.observableArrayList();
 
     Timeline timeline;
 
@@ -53,23 +62,30 @@ public class AdminCustomerList implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         try {
             conn = DBConnector.getConnection();
-            driverRS = conn.createStatement().executeQuery("SELECT * FROM driverlist");
-            while (driverRS.next()){
-                oblist.add(new Driver(driverRS.getString("name"), driverRS.getInt("capacity"),
-                        driverRS.getString("location"), driverRS.getString("status"),
-                        driverRS.getString("customer"), driverRS.getDouble("rating")));
+            customerRS = conn.createStatement().executeQuery("SELECT * FROM user");
+            while (customerRS.next()){
+                oblist.add(new Customer(customerRS.getString("username"), customerRS.getString("phone"),
+                        customerRS.getString("password"), customerRS.getString("status"),
+                        customerRS.getString("expected arrival time"), customerRS.getInt("capacity"),
+                        customerRS.getString("starting point"), customerRS.getString("destination")));
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
 
-        name_col.setCellValueFactory(new PropertyValueFactory<>("name"));
-        icnumber_col.setCellValueFactory(new PropertyValueFactory<>("icNumber"));
+        username_col.setCellValueFactory(new PropertyValueFactory<>("name"));
+        status_col.setCellValueFactory(new PropertyValueFactory<>("status"));
+        expectedArrivalTime_col.setCellValueFactory(new PropertyValueFactory<>("expectedArrivalTime"));
+        capacity_col.setCellValueFactory(new PropertyValueFactory<>("capacity"));
+        startingPoint_col.setCellValueFactory(new PropertyValueFactory<>("startingPoint"));
+        destination_col.setCellValueFactory(new PropertyValueFactory<>("destination"));
 
-        driverTable.setItems(oblist);
+
+
+        customerTable.setItems(oblist);
 
         timeline = new Timeline(
-                new KeyFrame(Duration.seconds(1), e -> {
+                new KeyFrame(Duration.seconds(0.5), e -> {
 //                    System.out.println("Testing");
                     refreshTable();
                 })
@@ -78,25 +94,11 @@ public class AdminCustomerList implements Initializable {
         timeline.play();
     }
 
-    public void addCustomerButtonOnAction(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("adminAddDriverPage.fxml"));
-        Scene scene = new Scene(root);
-        Stage stage = new Stage();
-        stage.setTitle("Add Driver");
-        stage.setScene(scene);
-        stage.initStyle(StageStyle.UNDECORATED);
-        stage.initModality(Modality.APPLICATION_MODAL);
-        stage.initOwner(backwardButton.getScene().getWindow());
-        stage.show();
-//        sqlStatement = conn.prepareStatement("INSERT INTO driverlist ")
-//        refreshTable();
-    }
-
     public void deleteCustomerButtonOnAction(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("adminDeleteDriverPage.fxml"));
         Scene scene = new Scene(root);
         Stage stage = new Stage();
-        stage.setTitle("Delete Driver");
+        stage.setTitle("Delete Customer");
         stage.setScene(scene);
         stage.initStyle(StageStyle.UNDECORATED);
         stage.initModality(Modality.APPLICATION_MODAL);
@@ -131,11 +133,14 @@ public class AdminCustomerList implements Initializable {
     public void refreshTable(){
         try{
             oblist.clear();
-            driverRS = conn.createStatement().executeQuery("SELECT * FROM driverlist");
-            while (driverRS.next()){
-//                oblist.add(new Driver(driverRS.getString("Name"), driverRS.getInt("IcNumber")));
+            customerRS = conn.createStatement().executeQuery("SELECT * FROM user");
+            while (customerRS.next()){
+                oblist.add(new Customer(customerRS.getString("username"), customerRS.getString("phone"),
+                        customerRS.getString("password"), customerRS.getString("status"),
+                        customerRS.getString("expected arrival time"), customerRS.getInt("capacity"),
+                        customerRS.getString("starting point"), customerRS.getString("destination")));
             }
-            driverTable.setItems(oblist);
+            customerTable.setItems(oblist);
         } catch (Exception e) {
             e.printStackTrace();
         }

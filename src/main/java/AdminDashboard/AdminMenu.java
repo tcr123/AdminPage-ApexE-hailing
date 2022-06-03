@@ -54,24 +54,8 @@ public class AdminMenu implements Initializable{
         stage.show();
     }
 
-    public void customerStatusButtonAction(ActionEvent event) throws IOException{
-        Parent root = FXMLLoader.load(getClass().getResource("adminCustomerStatusPage.fxml"));
-        Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
-    }
-
     public void driverListButtonOnAction(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("adminDriverListPage.fxml"));
-        Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
-    }
-
-    public void driverStatusButtonOnAction(ActionEvent event) throws IOException{
-        Parent root = FXMLLoader.load(getClass().getResource("adminDriverStatusPage.fxml"));
         Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
         Scene scene = new Scene(root);
         stage.setScene(scene);

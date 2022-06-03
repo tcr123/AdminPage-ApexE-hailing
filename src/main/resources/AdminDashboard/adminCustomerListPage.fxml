@@ -62,14 +62,17 @@
                   <Font name="Times New Roman" size="18.0" />
                </font>
             </Label>
-            <TableView fx:id="driverTable" layoutX="50.0" layoutY="72.0" prefHeight="492.0" prefWidth="750.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+            <TableView fx:id="customerTable" layoutX="50.0" layoutY="72.0" prefHeight="492.0" prefWidth="750.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
               <columns>
-                <TableColumn fx:id="name_col" prefWidth="168.0" text="Name" />
-                  <TableColumn fx:id="icnumber_col" minWidth="9.0" prefWidth="123.0" text="IC Number" />
+                <TableColumn fx:id="username_col" prefWidth="168.0" text="Username" />
+                  <TableColumn fx:id="status_col" minWidth="9.0" prefWidth="62.0" text="Status" />
+                  <TableColumn fx:id="expectedArrivalTime_col" prefWidth="138.0" text="Expected Arrival Time" />
+                  <TableColumn fx:id="capacity_col" prefWidth="59.0" text="Capacity" />
+                  <TableColumn fx:id="startingPoint_col" prefWidth="106.0" text="Starting Point" />
+                  <TableColumn fx:id="destination_col" prefWidth="75.0" text="Destination" />
               </columns>
             </TableView>
             <Button fx:id="refreshButton" layoutX="685.0" layoutY="39.0" minWidth="53.0" mnemonicParsing="false" onAction="#refreshButtonOnAction" prefHeight="30.0" prefWidth="61.0" text="Refresh" />
-            <Button fx:id="addCustomerButton" layoutX="473.0" layoutY="39.0" minWidth="53.0" mnemonicParsing="false" onAction="#addCustomerButtonOnAction" prefHeight="30.0" prefWidth="97.0" text="Add Customer" />
             <Button fx:id="deleteCustomerButton" layoutX="574.0" layoutY="39.0" minWidth="53.0" mnemonicParsing="false" onAction="#deleteCustomerButtonOnAction" prefHeight="30.0" prefWidth="107.0" text="Delete Customer" />
          </children>
       </AnchorPane>

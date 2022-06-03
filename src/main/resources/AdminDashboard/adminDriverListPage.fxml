@@ -65,16 +65,17 @@
             <TableView fx:id="driverTable" layoutX="50.0" layoutY="72.0" prefHeight="492.0" prefWidth="750.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
               <columns>
                 <TableColumn fx:id="name_col" prefWidth="168.0" text="Name" />
-                  <TableColumn fx:id="capacity_col" minWidth="9.0" prefWidth="123.0" text="capacity" />
-                  <TableColumn fx:id="location_col" prefWidth="75.0" text="location" />
+                  <TableColumn fx:id="capacity_col" minWidth="9.0" prefWidth="67.0" text="capacity" />
+                  <TableColumn fx:id="location_col" prefWidth="131.0" text="location" />
                   <TableColumn fx:id="status_col" prefWidth="75.0" text="status" />
                   <TableColumn fx:id="customer_col" prefWidth="75.0" text="customer" />
                   <TableColumn fx:id="rating_col" prefWidth="75.0" text="rating" />
               </columns>
             </TableView>
-            <Button fx:id="refreshButton" layoutX="685.0" layoutY="39.0" minWidth="53.0" mnemonicParsing="false" onAction="#refreshButtonOnAction" prefHeight="30.0" prefWidth="61.0" text="Refresh" />
-            <Button fx:id="addDriverButton" layoutX="509.0" layoutY="39.0" minWidth="53.0" mnemonicParsing="false" onAction="#addDriverButtonOnAction" prefHeight="30.0" prefWidth="79.0" text="Add Driver" />
-            <Button fx:id="deleteDriverButton" layoutX="590.0" layoutY="39.0" minWidth="53.0" mnemonicParsing="false" onAction="#deleteDriverButtonOnAction" prefHeight="30.0" prefWidth="93.0" text="Delete Driver" />
+            <Button fx:id="refreshButton" layoutX="685.0" layoutY="40.0" minWidth="53.0" mnemonicParsing="false" onAction="#refreshButtonOnAction" prefHeight="30.0" prefWidth="61.0" text="Refresh" />
+            <Button fx:id="addDriverButton" layoutX="427.0" layoutY="40.0" minWidth="53.0" mnemonicParsing="false" onAction="#addDriverButtonOnAction" prefHeight="30.0" prefWidth="79.0" text="Add Driver" />
+            <Button fx:id="deleteDriverButton" layoutX="590.0" layoutY="40.0" minWidth="53.0" mnemonicParsing="false" onAction="#deleteDriverButtonOnAction" prefHeight="30.0" prefWidth="93.0" text="Delete Driver" />
+            <Button fx:id="editDriverButton" layoutX="509.0" layoutY="40.0" minWidth="53.0" mnemonicParsing="false" onAction="#editDriverButtonOnAction" prefHeight="30.0" prefWidth="79.0" text="Edit Driver" />
          </children>
       </AnchorPane>
    </left>

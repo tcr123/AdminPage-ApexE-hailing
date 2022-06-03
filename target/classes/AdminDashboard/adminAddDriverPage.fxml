@@ -1,25 +1,52 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Point3D?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
 
-
-<AnchorPane prefHeight="650.0" prefWidth="500.0" style="-fx-background-color: #dceff7; -fx-border-color: #362ed1; -fx-border-width: 3;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="AdminDashboard.AdminAddDriver">
+<AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="500.0" style="-fx-background-color: #dceff7; -fx-border-color: #362ed1; -fx-border-width: 3;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="AdminDashboard.AdminAddDriver">
    <children>
-      <Button fx:id="addDriverButton" layoutX="272.0" layoutY="510.0" mnemonicParsing="false" onAction="#addDriverButtonOnAction" prefHeight="25.0" prefWidth="177.0" text="Add a driver" />
-      <Pane prefHeight="36.0" prefWidth="500.0" style="-fx-background-color: #7FD1FA;" AnchorPane.leftAnchor="0.0">
+      <Button fx:id="addDriverButton" layoutX="301.0" layoutY="391.0" mnemonicParsing="false" onAction="#addDriverButtonOnAction" prefHeight="25.0" prefWidth="177.0" text="Add a driver" />
+      <Label layoutX="45.0" layoutY="125.0" prefHeight="20.0" prefWidth="149.0" text="Name" textAlignment="RIGHT">
+         <font>
+            <Font name="Times New Roman" size="18.0" />
+         </font>
+      </Label>
+      <TextField fx:id="name_field" layoutX="202.0" layoutY="122.0" prefHeight="25.0" prefWidth="280.0" />
+      <Label layoutX="45.0" layoutY="155.0" prefHeight="20.0" prefWidth="149.0" text="Vehicle capacity" textAlignment="RIGHT">
+         <font>
+            <Font name="Times New Roman" size="18.0" />
+         </font>
+      </Label>
+      <RadioButton fx:id="four_seater" layoutX="202.0" layoutY="157.0" mnemonicParsing="false" text="4 seater">
+         <toggleGroup>
+            <ToggleGroup fx:id="capacity" />
+         </toggleGroup>
+      </RadioButton>
+      <RadioButton fx:id="six_seater" layoutX="287.0" layoutY="157.0" mnemonicParsing="false" text="6 seater" toggleGroup="$capacity" />
+      <Label layoutX="45.0" layoutY="186.0" prefHeight="20.0" prefWidth="149.0" text="Location">
+         <font>
+            <Font name="Times New Roman" size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="alert_message" alignment="CENTER" layoutX="18.0" layoutY="338.0" prefHeight="17.0" prefWidth="466.0" textFill="RED">
+         <font>
+            <Font name="Times New Roman" size="14.0" />
+         </font>
+      </Label>
+      <ChoiceBox fx:id="location_choiceBox" layoutX="202.0" layoutY="184.0" prefHeight="25.0" prefWidth="280.0" />
+      <Pane layoutX="3.0" layoutY="3.0" prefHeight="36.0" prefWidth="494.0" style="-fx-background-color: #7FD1FA;">
          <children>
-            <Text layoutX="13.0" layoutY="23.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Add Driver">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </Text>
-            <Button fx:id="exitButton" layoutX="464.0" layoutY="-1.0" mnemonicParsing="false" onAction="#exitButtonOnAction" prefHeight="36.0" prefWidth="36.0" style="-fx-background-color: transparent;">
+            <Button fx:id="exitButton" layoutX="457.0" mnemonicParsing="false" onAction="#exitButtonOnAction" prefHeight="36.0" prefWidth="36.0" style="-fx-background-color: transparent;">
                <graphic>
                   <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -28,7 +55,15 @@
                   </ImageView>
                </graphic>
             </Button>
+            <Label layoutX="14.0" layoutY="10.0" text="Add driver">
+               <font>
+                  <Font name="Times New Roman" size="14.0" />
+               </font>
+            </Label>
          </children>
       </Pane>
    </children>
+   <rotationAxis>
+      <Point3D />
+   </rotationAxis>
 </AnchorPane>
