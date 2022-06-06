@@ -38,12 +38,16 @@ public class AdminMenu implements Initializable{
     private ImageView warningIcon;
     @FXML
     private Label logoutAlertMessage;
+    @FXML
+    private Text nametext;
 
     boolean exit = false;
+    public static String adminName;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 //        menuList.getItems().addAll(menu);
+        nametext.setText("Hello, " + adminName);
     }
 
     public void customerListButtonOnAction(ActionEvent event) throws IOException{
@@ -85,5 +89,13 @@ public class AdminMenu implements Initializable{
             stage.setScene(scene);
             stage.show();
         }
+    }
+
+    public void mapButtonOnAction(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("adminMapPage.fxml"));
+        Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
     }
 }

@@ -31,6 +31,8 @@ public class AdminLogin extends Application {
     @FXML
     private Label loginMessage;
 
+    private static String adminName = "";
+
     @Override
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(AdminLogin.class.getResource("adminLoginPage.fxml"));
@@ -48,6 +50,14 @@ public class AdminLogin extends Application {
 
     public static void accessAdminLoginPage() {
         launch();
+    }
+
+    public void accessToMenuPage(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("adminMenuPage.fxml"));
+        Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
     }
 
     public void loginButtonOnAction(ActionEvent event) throws Exception {
@@ -77,6 +87,7 @@ public class AdminLogin extends Application {
                 if (!password.equals(dbPassword)){
                     loginMessage.setText("Wrong password! Please try again!");
                 } else {
+                    AdminMenu.adminName = dbName;
                     accessToMenuPage(event);
                 }
             }
@@ -96,13 +107,5 @@ public class AdminLogin extends Application {
     public void exitButtonOnAction(ActionEvent event) throws IOException {
         Stage stage = (Stage) exitButton.getScene().getWindow();
         exit(stage);
-    }
-
-    public void accessToMenuPage(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("adminMenuPage.fxml"));
-        Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
     }
 }

@@ -9,7 +9,7 @@ public class DBConnector {
     public static Connection getConnection() throws Exception {
         try {
             String driver = "com.mysql.cj.jdbc.Driver";
-            String url = "jdbc:mysql://10.210.31.31:3306/apex";
+            String url = "jdbc:mysql://10.210.6.168/apex";
             String username = "apex";
             String password = "1118";
 //            String url = "jdbc:mysql://localhost/apexTesting";

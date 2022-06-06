@@ -51,7 +51,12 @@
             <Button fx:id="logoutButton" layoutX="14.0" layoutY="525.0" mnemonicParsing="false" onAction="#goLoginPage" prefHeight="30.0" prefWidth="194.0" text="Log Out" />
             <Button fx:id="customerListButton" layoutX="14.0" layoutY="48.0" mnemonicParsing="false" onAction="#customerListButtonOnAction" prefHeight="40.0" prefWidth="140.0" text="Customer List" />
             <Button fx:id="driverListButton" layoutX="14.0" layoutY="97.0" mnemonicParsing="false" onAction="#driverListButtonOnAction" prefHeight="40.0" prefWidth="140.0" text="Driver List" />
-            <Button fx:id="mapButton" layoutX="14.0" layoutY="147.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="140.0" text="Map" />
+            <Button fx:id="mapButton" layoutX="14.0" layoutY="147.0" mnemonicParsing="false" onAction="#mapButtonOnAction" prefHeight="40.0" prefWidth="140.0" text="Map" />
+            <Text fx:id="nametext" layoutX="324.0" layoutY="104.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="289.0">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
          </children>
       </AnchorPane>
    </left>

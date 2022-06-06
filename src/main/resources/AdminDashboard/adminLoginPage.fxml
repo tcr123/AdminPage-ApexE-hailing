@@ -4,43 +4,45 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
 
-<BorderPane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="AdminDashboard.AdminLogin">
-   <right>
-      <AnchorPane prefHeight="400.0" prefWidth="341.0" BorderPane.alignment="CENTER">
+<AnchorPane prefHeight="600.0" prefWidth="750.0" styleClass="root" stylesheets="@../Picture/style.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="AdminDashboard.AdminLogin">
+   <children>
+      <AnchorPane layoutX="375.0" prefHeight="600.0" prefWidth="375.0" style="-fx-background-color: #1B9CCF40;">
          <children>
-            <Label layoutX="30.0" layoutY="189.0" prefHeight="28.0" prefWidth="63.0" text="Username">
+            <Label layoutX="43.0" layoutY="197.0" prefHeight="28.0" prefWidth="63.0" text="Username" textFill="WHITE">
                <font>
                   <Font size="14.0" />
                </font>
             </Label>
-            <TextField fx:id="usernameField" layoutX="112.0" layoutY="191.0" prefHeight="25.0" prefWidth="206.0" />
-            <Label layoutX="30.0" layoutY="222.0" prefHeight="28.0" prefWidth="63.0" text="Password">
+            <TextField fx:id="usernameField" layoutX="127.0" layoutY="198.0" prefHeight="25.0" prefWidth="206.0" />
+            <Label layoutX="43.0" layoutY="233.0" prefHeight="28.0" prefWidth="63.0" text="Password" textFill="WHITE">
                <font>
                   <Font size="14.0" />
                </font>
             </Label>
-            <PasswordField fx:id="passwordField" layoutX="112.0" layoutY="224.0" prefHeight="25.0" prefWidth="206.0" />
-            <Button fx:id="loginButton" layoutX="28.0" layoutY="296.0" mnemonicParsing="false" onAction="#loginButtonOnAction" prefHeight="25.0" prefWidth="290.0" text="Login" />
-            <Button fx:id="exitButton" layoutX="28.0" layoutY="330.0" mnemonicParsing="false" onAction="#exitButtonOnAction" prefHeight="25.0" prefWidth="290.0" text="Exit" />
-            <Label fx:id="loginMessage" alignment="CENTER" layoutX="28.0" layoutY="265.0" prefHeight="17.0" prefWidth="290.0" textFill="RED">
+            <PasswordField fx:id="passwordField" layoutX="127.0" layoutY="234.0" prefHeight="25.0" prefWidth="206.0" />
+            <Button fx:id="loginButton" layoutX="43.0" layoutY="325.0" mnemonicParsing="false" onAction="#loginButtonOnAction" prefHeight="25.0" prefWidth="290.0" text="Login" />
+            <Button fx:id="exitButton" layoutX="43.0" layoutY="364.0" mnemonicParsing="false" onAction="#exitButtonOnAction" prefHeight="25.0" prefWidth="290.0" text="Exit" />
+            <Label fx:id="loginMessage" alignment="CENTER" layoutX="43.0" layoutY="279.0" prefHeight="17.0" prefWidth="290.0" textFill="WHITE">
                <font>
                   <Font size="14.0" />
                </font>
             </Label>
-            <Text layoutX="81.0" layoutY="164.0" strokeType="OUTSIDE" strokeWidth="0.0" text=" Admin Dashboard" textAlignment="CENTER" wrappingWidth="178.13671875">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Text>
+            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="88.0" layoutY="139.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Picture/title4.png" />
+               </image>
+            </ImageView>
          </children>
       </AnchorPane>
-   </right>
-   <left>
-      <AnchorPane prefHeight="500.0" prefWidth="359.0" BorderPane.alignment="CENTER" />
-   </left>
-</BorderPane>
+      <ImageView fitHeight="319.0" fitWidth="310.0" layoutX="33.0" layoutY="102.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Picture/title1.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>
