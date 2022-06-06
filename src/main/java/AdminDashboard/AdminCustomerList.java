@@ -66,8 +66,8 @@ public class AdminCustomerList implements Initializable {
             while (customerRS.next()){
                 oblist.add(new Customer(customerRS.getString("username"), customerRS.getString("phone"),
                         customerRS.getString("password"), customerRS.getString("status"),
-                        customerRS.getString("expected arrival time"), customerRS.getInt("capacity"),
-                        customerRS.getString("starting point"), customerRS.getString("destination")));
+                        customerRS.getString("expected_arrival_time"), customerRS.getInt("capacity"),
+                        customerRS.getString("starting_point"), customerRS.getString("destination")));
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -137,8 +137,8 @@ public class AdminCustomerList implements Initializable {
             while (customerRS.next()){
                 oblist.add(new Customer(customerRS.getString("username"), customerRS.getString("phone"),
                         customerRS.getString("password"), customerRS.getString("status"),
-                        customerRS.getString("expected arrival time"), customerRS.getInt("capacity"),
-                        customerRS.getString("starting point"), customerRS.getString("destination")));
+                        customerRS.getString("expected_arrival_time"), customerRS.getInt("capacity"),
+                        customerRS.getString("starting_point"), customerRS.getString("destination")));
             }
             customerTable.setItems(oblist);
         } catch (Exception e) {
