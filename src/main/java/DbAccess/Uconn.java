@@ -10,7 +10,7 @@ public class Uconn {
     public static Connection getConnection() {
         try {
             String driver = "com.mysql.cj.jdbc.Driver";
-            String url = "jdbc:mysql://10.210.1.168:3306/apex";
+            String url = "jdbc:mysql://10.210.8.145:3306/apex";
             String username = "apex";
             String password = "1118";
             Class.forName(driver);

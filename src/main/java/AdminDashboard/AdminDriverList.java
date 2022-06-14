@@ -80,6 +80,13 @@ public class AdminDriverList implements Initializable {
 
 
         driverTable.setItems(oblist);
+        driverTable.setOnMouseClicked(e -> {
+            try {
+                showComments();
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
+        });
 
         timeline = new Timeline(
                 new KeyFrame(Duration.seconds(1), e -> {
@@ -135,6 +142,7 @@ public class AdminDriverList implements Initializable {
         alert.setContentText("Do you want to exit?: ");
         if (alert.showAndWait().get() == ButtonType.OK){
             stage.close();
+            timeline.stop();
         }
     }
 
@@ -164,5 +172,16 @@ public class AdminDriverList implements Initializable {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    public void showComments() throws IOException {
+        System.out.println(driverTable.getSelectionModel().getSelectedItem().getName());
+        AdminDriverComments.setDriverName(driverTable.getSelectionModel().getSelectedItem().getName());
+        Parent root = FXMLLoader.load(getClass().getResource("adminDriverCommentPage.fxml"));
+        Stage stage = (Stage) driverTable.getScene().getWindow();
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+        timeline.stop();
     }
 }
