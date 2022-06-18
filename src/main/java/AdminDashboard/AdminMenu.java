@@ -47,7 +47,7 @@ public class AdminMenu implements Initializable{
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 //        menuList.getItems().addAll(menu);
-        nametext.setText("Hello, " + adminName);
+        nametext.setText(adminName);
     }
 
     public void customerListButtonOnAction(ActionEvent event) throws IOException{

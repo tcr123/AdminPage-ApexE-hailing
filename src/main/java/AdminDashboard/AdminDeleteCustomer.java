@@ -10,42 +10,40 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
-public class AdminDeleteDriver {
+public class AdminDeleteCustomer {
     @FXML
-    private Button deleteDriverButton,
+    private Button deleteCustomerButton,
             exitButton;
     @FXML
     private Label alert_message;
     @FXML
     private TextField name_field;
 
-    public void deleteDriverButtonOnAction(ActionEvent event) throws Exception {
+    public void deleteCustomerButtonOnAction(ActionEvent event) throws Exception {
         Connection conn = DBConnector.getConnection();
         String name = name_field.getText();
-        PreparedStatement statement = conn.prepareStatement("SELECT COUNT(name) AS got FROM driver WHERE name = '"+name+"'");
+        PreparedStatement statement = conn.prepareStatement("SELECT COUNT(username) AS got FROM user WHERE username = '"+name+"'");
         ResultSet rs = statement.executeQuery();
         int got = 0;
         while (rs.next()){
             got = rs.getInt("got");
         }
         if (got == 0){
-            alert_message .setText("Driver \""+name+"\" not found!");
+            alert_message .setText("Customer \""+name+"\" not found!");
         } else {
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-            alert.setTitle("Delete Driver Confirmation");
-            alert.setHeaderText("Delete driver \"" + name +"\"");
-            alert.setContentText("Do you want to delete the driver?");
+            alert.setTitle("Delete Customer Confirmation");
+            alert.setHeaderText("Delete customer \"" + name +"\"");
+            alert.setContentText("Do you want to delete the customer?");
             if (alert.showAndWait().get() == ButtonType.OK) {
-                statement = conn.prepareStatement("DELETE FROM driver WHERE name = '"+name+"'");
-                statement.executeUpdate();
-                statement = conn.prepareStatement("DELETE FROM comment WHERE driver = '"+name+"'");
+                statement = conn.prepareStatement("DELETE FROM user WHERE username = '"+name+"'");
                 statement.executeUpdate();
                 alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setTitle("Delete Driver");
-                alert.setHeaderText("Driver "+name+" has been deleted!");
+                alert.setTitle("Delete Customer");
+                alert.setHeaderText("Customer "+name+" has been deleted!");
                 alert.showAndWait();
             }
-            Stage stage = (Stage) deleteDriverButton.getScene().getWindow();
+            Stage stage = (Stage) deleteCustomerButton.getScene().getWindow();
             stage.close();
         }
     }

@@ -52,9 +52,19 @@
             <Button fx:id="customerListButton" layoutX="14.0" layoutY="48.0" mnemonicParsing="false" onAction="#customerListButtonOnAction" prefHeight="40.0" prefWidth="140.0" text="Customer List" />
             <Button fx:id="driverListButton" layoutX="14.0" layoutY="97.0" mnemonicParsing="false" onAction="#driverListButtonOnAction" prefHeight="40.0" prefWidth="140.0" text="Driver List" />
             <Button fx:id="mapButton" layoutX="14.0" layoutY="147.0" mnemonicParsing="false" onAction="#mapButtonOnAction" prefHeight="40.0" prefWidth="140.0" text="Map" />
-            <Text fx:id="nametext" layoutX="324.0" layoutY="104.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="289.0">
+            <Text fx:id="nametext" layoutX="296.0" layoutY="74.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="289.0">
                <font>
-                  <Font size="18.0" />
+                  <Font name="Times New Roman" size="18.0" />
+               </font>
+            </Text>
+            <Text layoutX="193.0" layoutY="74.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Hello, Admin">
+               <font>
+                  <Font name="Times New Roman" size="18.0" />
+               </font>
+            </Text>
+            <Text layoutX="193.0" layoutY="103.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome back to admin dashboard! You can view customers and drivers details in this dashboard." wrappingWidth="536.8388671875">
+               <font>
+                  <Font size="14.0" />
                </font>
             </Text>
          </children>

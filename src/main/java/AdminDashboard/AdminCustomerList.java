@@ -95,7 +95,7 @@ public class AdminCustomerList implements Initializable {
     }
 
     public void deleteCustomerButtonOnAction(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("adminDeleteDriverPage.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("adminDeleteCustomerPage.fxml"));
         Scene scene = new Scene(root);
         Stage stage = new Stage();
         stage.setTitle("Delete Customer");

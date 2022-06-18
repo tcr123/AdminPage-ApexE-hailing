@@ -36,6 +36,8 @@ public class AdminDriverComments implements Initializable {
     private TableView<Comments> commentsTable;
     @FXML
     private TableColumn<Comments, String> comments_col;
+    @FXML
+    private Label driverNameLabel;
 
     Connection conn = null;
     ResultSet commentsRS = null;
@@ -48,6 +50,7 @@ public class AdminDriverComments implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        driverNameLabel.setText(driverName);
         try {
             conn = DBConnector.getConnection();
             commentsRS = conn.createStatement().executeQuery("SELECT * FROM comment WHERE driver = '"+driverName+"'");
