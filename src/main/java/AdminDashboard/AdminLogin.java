@@ -37,8 +37,9 @@ public class AdminLogin extends Application {
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(AdminLogin.class.getResource("adminLoginPage.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 750, 600);
-//        stage.setTitle("Apex E-Hailing");
-        stage.initStyle(StageStyle.UNDECORATED);
+        stage.setTitle("Apex E-Hailing");
+        stage.setResizable(false);
+//        stage.initStyle(StageStyle.UNDECORATED);
         stage.setScene(scene);
         stage.show();
 
@@ -62,13 +63,13 @@ public class AdminLogin extends Application {
 
     public void loginButtonOnAction(ActionEvent event) throws Exception {
         if ((usernameField.getText().isBlank())&&(passwordField.getText().isBlank())){
-            loginMessage.setText("Please enter UserID and password!");
+            loginMessage.setText("Please enter Admin ID and password!");
         }
         else if (passwordField.getText().isBlank()){
             loginMessage.setText("Please enter password!");
         }
         else if (usernameField.getText().isBlank()){
-            loginMessage.setText("Please enter UserID!");
+            loginMessage.setText("Please enter Admin ID!");
         }
         else{
             Connection con = DBConnector.getConnection();

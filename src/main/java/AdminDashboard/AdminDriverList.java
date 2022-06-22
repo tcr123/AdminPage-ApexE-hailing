@@ -175,7 +175,7 @@ public class AdminDriverList implements Initializable {
     }
 
     public void showComments() throws IOException {
-        System.out.println(driverTable.getSelectionModel().getSelectedItem().getName());
+//        System.out.println(driverTable.getSelectionModel().getSelectedItem().getName());
         AdminDriverComments.setDriverName(driverTable.getSelectionModel().getSelectedItem().getName());
         Parent root = FXMLLoader.load(getClass().getResource("adminDriverCommentPage.fxml"));
         Stage stage = (Stage) driverTable.getScene().getWindow();
